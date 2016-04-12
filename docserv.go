@@ -6,11 +6,13 @@ import (
 	"html/template"
 	"io/ioutil"
 	"net/http"
+	"regexp"
 )
 
 var (
-	endpoint       = "/docs"
-	parsedTemplate *template.Template
+	endpoint        = "/docs"
+	parsedTemplate  *template.Template
+	identifierRegex = regexp.MustCompile("[^A-Za-z0-9]+")
 )
 
 type DocServConfig struct {
