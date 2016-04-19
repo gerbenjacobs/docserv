@@ -2,12 +2,13 @@ package docserv
 
 import (
 	"fmt"
+	"github.com/gerbenjacobs/docserv/bindata"
 	"html/template"
 	"strings"
 )
 
 func getTemplate() error {
-	h, err := Asset("etc/doc.html")
+	h, err := bindata.Asset("etc/doc.html")
 	if err != nil {
 		return fmt.Errorf("Failed to read HTML: %v\n", err)
 	}

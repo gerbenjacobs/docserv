@@ -5,7 +5,7 @@ if [[ $PWD = */etc ]]; then
 fi
 
 gofmt -w .
-go-bindata -pkg docserv -o ./bindata.go ./etc/doc.html
+go-bindata -pkg bindata -o ./bindata/bindata.go ./etc/doc.html
 
 if [[ $1 = "run" ]]; then
     go run ./test/main.go
