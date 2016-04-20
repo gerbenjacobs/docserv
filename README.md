@@ -49,7 +49,7 @@ type DocServConfig struct {
 
 ## Template
 
-![screenshot](https://raw.githubusercontent.com/gerbenjacobs/docserv/master/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/gerbenjacobs/docserv/static_mode/screenshot.png)
 
 DocServ comes with a default template in `resources/template.html`. You can change this template if you wish.
 
