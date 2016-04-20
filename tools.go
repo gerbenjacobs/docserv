@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-func getTemplate() error {
-	h, err := bindata.Asset("etc/doc.html")
+func parseTemplate() error {
+	h, err := bindata.Asset("resources/template.html")
 	if err != nil {
 		return fmt.Errorf("Failed to read HTML: %v\n", err)
 	}
@@ -17,7 +17,7 @@ func getTemplate() error {
 		"ident": parseAsIdentifier,
 	}
 
-	parsedTemplate, err = template.New("docs").Funcs(f).Parse(string(h))
+	parsedTemplate, err = template.New(TEMPLATE).Funcs(f).Parse(string(h))
 	if err != nil {
 		return fmt.Errorf("Failed to parse HTML: %v\n", err)
 	}
