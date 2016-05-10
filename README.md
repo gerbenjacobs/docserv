@@ -35,7 +35,7 @@ ds.Run()
 
 ## Config
 
-```
+```go
 type DocServConfig struct {
 	Endpoint        string   // Endpoint to listen to (default: /docs)
 	UseStatic       bool     // Whether to use Static mode (default: false)
@@ -53,8 +53,7 @@ type DocServConfig struct {
 
 DocServ comes with a default template in `resources/template.html`. You can change this template if you wish.
 
-It is using `go-bindata` so you can either run the `resources/build.sh` script or run go-bindata directly as follows
-`go-bindata -pkg bindata -o ./bindata/bindata.go ./resources/doc.html` (Note: the package name and output file location)
+It is using `go-bindata` so you can run the `resources/build.sh` script.
 
 ### Syntax Highlighting
 
