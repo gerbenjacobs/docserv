@@ -4,11 +4,14 @@ import (
 	"fmt"
 	"github.com/gerbenjacobs/docserv/bindata"
 	"html/template"
+	"regexp"
 	"strings"
 )
 
-func getTemplate() error {
-	h, err := bindata.Asset("etc/doc.html")
+var identifierRegex = regexp.MustCompile("[^A-Za-z0-9]+")
+
+func parseTemplate() error {
+	h, err := bindata.Asset("resources/template.html")
 	if err != nil {
 		return fmt.Errorf("Failed to read HTML: %v\n", err)
 	}
@@ -17,7 +20,7 @@ func getTemplate() error {
 		"ident": parseAsIdentifier,
 	}
 
-	parsedTemplate, err = template.New("docs").Funcs(f).Parse(string(h))
+	parsedTemplate, err = template.New(TEMPLATE).Funcs(f).Parse(string(h))
 	if err != nil {
 		return fmt.Errorf("Failed to parse HTML: %v\n", err)
 	}
