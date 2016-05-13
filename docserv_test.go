@@ -7,17 +7,22 @@ func TestNewDocServ(t *testing.T) {
 	if d.DocServConfig.Port != "9000" {
 		t.Fail()
 	}
-	if d.DocServConfig.Docs[0] != "README.md" {
+	if _, ok := d.DocServConfig.Docs["README.md"]; !ok {
 		t.Fail()
 	}
 }
 
 func TestNewStaticDocServ(t *testing.T) {
-	d := NewStaticDocServ([]string{"README.md"})
+	d := NewStaticDocServ(map[string][]byte{"README.md": []byte("A Readme")})
 	if d.DocServConfig.Port != "9000" {
 		t.Fail()
 	}
-	if d.DocServConfig.Docs[0] != "README.md" {
+	if val, ok := d.DocServConfig.Docs["README.md"]; ok {
+		if string(val) != "A Readme" {
+			t.Fail()
+		}
+	}
+	if _, ok := d.DocServConfig.Docs["README.md"]; !ok {
 		t.Fail()
 	}
 	if d.DocServConfig.UseStatic != true {

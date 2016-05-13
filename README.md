@@ -1,6 +1,7 @@
 # docserv
 
 docserv is a Golang package that you can integrate into your project to generate a documentation browser.
+See [godoc](https://godoc.org/github.com/gerbenjacobs/docserv) for more information.
 
 It has two modes; reading the documents from filesystem or generating static copies with
 [go-bindata](https://github.com/jteeuwen/go-bindata)
@@ -26,10 +27,14 @@ ds.Run()
 
 `./static.sh [filepath]...`
 
-The above script will convert your documents to a go-bindata Go script that will imitate a local filesystem when you compile your original program
+The above script will convert your documents to a go-bindata Go script that will imitate a local filesystem when you compile your original program.
+
+You can copy this script to your project (you can change the package name and output file) and use it. __Make sure to import this package.__
 
 ```go
-ds := docserv.NewStaticDocServ([]string{"README.md"})
+import path/to/static
+
+ds := docserv.NewStaticDocServ(map[string][]byte{"README.md": static.MustAsset("README.md")})
 ds.Run()
 ```
 
@@ -53,7 +58,7 @@ type DocServConfig struct {
 
 DocServ comes with a default template in `resources/template.html`. You can change this template if you wish.
 
-It is using `go-bindata` so you can run the `resources/build.sh` script.
+It is using `go-bindata` so you can run the `build.sh` script.
 
 ### Syntax Highlighting
 

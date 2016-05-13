@@ -4,8 +4,11 @@ import (
 	"fmt"
 	"github.com/gerbenjacobs/docserv/bindata"
 	"html/template"
+	"regexp"
 	"strings"
 )
+
+var identifierRegex = regexp.MustCompile("[^A-Za-z0-9]+")
 
 func parseTemplate() error {
 	h, err := bindata.Asset("resources/template.html")
