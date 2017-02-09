@@ -2,10 +2,11 @@ package docserv
 
 import (
 	"fmt"
-	"github.com/gerbenjacobs/docserv/bindata"
 	"html/template"
 	"regexp"
 	"strings"
+
+	"github.com/gerbenjacobs/docserv/bindata"
 )
 
 var identifierRegex = regexp.MustCompile("[^A-Za-z0-9]+")

@@ -2,10 +2,11 @@ package docserv
 
 import (
 	"fmt"
-	"github.com/russross/blackfriday"
 	"html/template"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/russross/blackfriday"
 )
 
 const TEMPLATE = "docs"
